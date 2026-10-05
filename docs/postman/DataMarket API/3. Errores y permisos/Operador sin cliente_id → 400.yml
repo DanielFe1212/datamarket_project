@@ -1,0 +1,33 @@
+info:
+  name: Operador sin cliente_id → 400
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/pedidos"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "items": [
+          {
+            "producto_id": 1,
+            "cantidad": 1
+          }
+        ],
+        "metodo_pago": "tarjeta"
+      }
+  auth:
+    type: bearer
+    token: "{{token_operador}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

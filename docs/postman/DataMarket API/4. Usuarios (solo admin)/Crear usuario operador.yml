@@ -1,0 +1,29 @@
+info:
+  name: Crear usuario operador
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/usuarios"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "username": "operador2",
+        "password": "Operador2#2026",
+        "rol": "operador"
+      }
+  auth:
+    type: bearer
+    token: "{{token_admin}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

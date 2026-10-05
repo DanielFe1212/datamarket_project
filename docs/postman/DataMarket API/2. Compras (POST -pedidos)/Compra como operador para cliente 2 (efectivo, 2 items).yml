@@ -1,0 +1,43 @@
+info:
+  name: Compra como operador para cliente 2 (efectivo, 2 items)
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/pedidos"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "cliente_id": 2,
+        "items": [
+          {
+            "producto_id": 1,
+            "cantidad": 1
+          },
+          {
+            "producto_id": 2,
+            "cantidad": 1
+          }
+        ],
+        "metodo_pago": "efectivo"
+      }
+  auth:
+    type: bearer
+    token: "{{token_operador}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: if (res.getStatus() === 201) bru.setCollectionVar('pedido_id', res.getBody().pedido_id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

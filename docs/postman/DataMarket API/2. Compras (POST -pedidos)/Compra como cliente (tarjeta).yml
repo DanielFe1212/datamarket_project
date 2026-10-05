@@ -1,0 +1,38 @@
+info:
+  name: Compra como cliente (tarjeta)
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/pedidos"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "items": [
+          {
+            "producto_id": 1,
+            "cantidad": 2
+          }
+        ],
+        "metodo_pago": "tarjeta"
+      }
+  auth:
+    type: bearer
+    token: "{{token_cliente}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: if (res.getStatus() === 201) bru.setCollectionVar('pedido_id', res.getBody().pedido_id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

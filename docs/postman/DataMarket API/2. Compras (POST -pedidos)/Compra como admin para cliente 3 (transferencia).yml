@@ -1,0 +1,43 @@
+info:
+  name: Compra como admin para cliente 3 (transferencia)
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/pedidos"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "cliente_id": 3,
+        "items": [
+          {
+            "producto_id": 4,
+            "cantidad": 3
+          },
+          {
+            "producto_id": 5,
+            "cantidad": 1
+          }
+        ],
+        "metodo_pago": "transferencia"
+      }
+  auth:
+    type: bearer
+    token: "{{token_admin}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: if (res.getStatus() === 201) bru.setCollectionVar('pedido_id', res.getBody().pedido_id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

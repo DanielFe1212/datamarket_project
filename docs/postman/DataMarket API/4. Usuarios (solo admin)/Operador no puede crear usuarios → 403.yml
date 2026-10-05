@@ -1,0 +1,29 @@
+info:
+  name: Operador no puede crear usuarios → 403
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/usuarios"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "username": "x_user",
+        "password": "Password#2026",
+        "rol": "cliente"
+      }
+  auth:
+    type: bearer
+    token: "{{token_operador}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

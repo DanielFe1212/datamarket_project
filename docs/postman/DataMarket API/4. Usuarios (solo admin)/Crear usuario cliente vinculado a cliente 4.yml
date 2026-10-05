@@ -1,0 +1,30 @@
+info:
+  name: Crear usuario cliente vinculado a cliente 4
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/usuarios"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "username": "carlos",
+        "password": "Carlos#2026x",
+        "rol": "cliente",
+        "cliente_id": 4
+      }
+  auth:
+    type: bearer
+    token: "{{token_admin}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

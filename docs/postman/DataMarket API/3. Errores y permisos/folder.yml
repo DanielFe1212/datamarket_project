@@ -1,0 +1,7 @@
+info:
+  name: 3. Errores y permisos
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit

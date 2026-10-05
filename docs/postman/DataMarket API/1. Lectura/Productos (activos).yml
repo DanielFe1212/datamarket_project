@@ -1,0 +1,18 @@
+info:
+  name: Productos (activos)
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/productos"
+  auth:
+    type: bearer
+    token: "{{token_operador}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

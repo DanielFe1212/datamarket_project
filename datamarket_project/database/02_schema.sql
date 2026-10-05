@@ -1,0 +1,3 @@
+-- 02_schema.sql
+-- Este proyecto usa el schema `public` por defecto. Placeholder para este slice
+-- (gestión de usuarios); otros módulos del laboratorio podrían agregar schemas aquí.

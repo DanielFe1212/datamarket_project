@@ -1,0 +1,42 @@
+opencollection: 1.0.0
+
+info:
+  name: DataMarket API
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  variables:
+    - name: base_url
+      value: http://localhost:8000
+    - name: token_admin
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsInVzZXJfaWQiOjEsInJvbCI6ImFkbWluIiwiY2xpZW50ZV9pZCI6bnVsbCwiZXhwIjoxNzkxMTc1OTQ5fQ.iGd2cHnEmUlljkBDHPJEG7tovlnAFgsjuxG6hIPS-w0
+    - name: token_operador
+      value: ""
+    - name: token_analista
+      value: ""
+    - name: token_auditor
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhdWRpdG9yIiwidXNlcl9pZCI6NCwicm9sIjoiYXVkaXRvciIsImNsaWVudGVfaWQiOm51bGwsImV4cCI6MTc5MTE3NTk5NX0.CvVj5Hn7t3NnOmOJ2Jn7Ptw01z68-Z77eeJOLzY0TsI
+    - name: token_cliente
+      value: ""
+    - name: pedido_id
+      value: "1"
+
+docs:
+  content: "Orden sugerido: carpeta 0 (logins, guardan los tokens) → 1 (lectura) → 2 (compras) → 3 (casos de error/permisos). Requiere el servidor en {{base_url}}."
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

@@ -1,0 +1,22 @@
+info:
+  name: Inventario bajo stock
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/inventario?solo_bajo_stock=true"
+  params:
+    - name: solo_bajo_stock
+      value: "true"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token_operador}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

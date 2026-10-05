@@ -1,0 +1,34 @@
+info:
+  name: Cantidad 0 → 422
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/pedidos"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "cliente_id": 2,
+        "items": [
+          {
+            "producto_id": 1,
+            "cantidad": 0
+          }
+        ],
+        "metodo_pago": "tarjeta"
+      }
+  auth:
+    type: bearer
+    token: "{{token_operador}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

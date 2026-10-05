@@ -1,0 +1,13 @@
+# Python / uv
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Secretos locales (nunca commitear credenciales reales)
+api/.env
+
+# Backups de base de datos (binarios pesados, se documentan pero no se versionan)
+backup/*.backup
+
+.DS_Store
